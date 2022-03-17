@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@200;300;400;500;600;700;800&family=Lato:wght@100;300;400;700&family=Open+Sans:wght@400;600;700;800&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Raleway:wght@500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-family: 'Poppins',sans-serif;
+}
+
+body {
+    background-color: rgb(252, 237, 239);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    
+}
+.game {
+    background-color: #fff;
+    box-shadow: 1px 1px 10px 1px pink;
+    border-radius: 7px;
+    padding: 25px;
+    position: relative;
+    
+}
+
+.game .score {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1em;
+    
+    
+}
+
+.game .score h2 {
+    font-size: 1.4em;
+    font-weight: 600;
+    color: rgb(128, 123, 123);
+}
+
+.game .score p {
+    text-align: center;
+    font-size: 1.4em;
+    font-weight: 700;
+    color: rgb(70, 69, 69);
+}
+
+.game .intro {
+    text-align: center;
+    margin-bottom: 0.875em;
+    transition: 0.3s;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 50;
+    opacity: 1;
+}
+
+.game .intro h1 {
+    font-size: 1.4em;
+    font-weight: 600;
+    color: rgb(128, 123, 123);
+    margin-bottom: 3.5em;
+}
+
+.game .intro button,
+.game .match .options button {
+    padding: 7px 20px;
+    outline: unset;
+    background-color: rgb(241, 72, 101);
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    font-size: 0.9em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.game .intro button:hover,
+.game .match .options button:hover {
+    background-color: rgb(247, 139, 157);
+}
+
+.game .match {
+    opacity: 0;
+    transition: 0.8s;
+    z-index: 49;
+    position: relative;
+    pointer-events: none;
+}
+
+.game .match h2 {
+    margin-top: 2em;
+    text-align: center;
+    color: rgb(128, 123, 123);
+    font-size: 1.85em;
+    font-weight: 600;
+}
+
+.game .match .options {
+    width: fit-content;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 1em;
+}
+
+.game .match .hands {
+    margin-bottom: 0.5em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.game .match .hands .player-hand {
+    transform: rotateY(180deg);
+}
+
+.game .match .hands img {
+    margin: 1em;
+}
+
+#back-btn {
+    position: absolute;
+    bottom: -15px;
+    left: -15px;
+}
+
+#back-btn button {
+    height: 50px;
+    width: 50px;
+    outline: unset;
+    background-color: rgb(241, 72, 101);
+    box-sizing: border-box;
+    border-radius: 50%;
+    border: none;
+    color: #fff;
+    font-size: 0.9em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(180deg);
+}
+
+#back-btn button:hover {
+    background-color: rgb(247, 139, 157);
+}
+
+
+@keyframes shakePlayer {
+    0% {
+        transform: rotateY(180deg) translateY(0px);
+    }
+    15% {
+        transform: rotateY(180deg) translateY(-50px);
+    }
+    25% {
+        transform: rotateY(180deg) translateY(0px);
+    }
+    35% {
+        transform: rotateY(180deg) translateY(-50px);
+    }
+    50% {
+        transform: rotateY(180deg) translateY(0px);
+    }
+    65% {
+        transform: rotateY(180deg) translateY(-50px);
+    }
+    75% {
+        transform: rotateY(180deg) translateY(0px);
+    }
+    85% {
+        transform: rotateY(180deg) translateY(-50px);
+    }
+    100% {
+        transform: rotateY(180deg) translateY(0px);
+    }
+}
+
+@keyframes shakeComputer {
+    0% {
+        transform: translateY(0px);
+    }
+    15% {
+        transform: translateY(-50px);
+    }
+    25% {
+        transform: translateY(0px);
+    }
+    35% {
+        transform: translateY(-50px);
+    }
+    50% {
+        transform: translateY(0px);
+    }
+    65% {
+        transform: translateY(-50px);
+    }
+    75% {
+        transform: translateY(0px);
+    }
+    85% {
+        transform: translateY(-50px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.dots {
+    position: relative;
+    margin-top: 6em;
+}
+
+/*LOADING SCREEN*/
+.dots span{
+    position: absolute;
+    width: 0.3em;
+    height: 1em;
+    background-color: rgb(248, 185, 193);
+    /*border-radius: 50%;*/
+    transform: rotate(calc(var(--i) * (360deg / 13))) translateY(20px);
+    animation: animate 1.5s linear infinite;
+    animation-delay: calc(var(--i) * 0.12s);
+    opacity: 0;
+}
+
+@keyframes animate {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
